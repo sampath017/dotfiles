@@ -7,25 +7,33 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 set mouse=a
-colorscheme onedark
+set cursorline
+set cindent
+set bg=dark
+set noshowmode
 
 let mapleader = " "
 
 " ------ FileTypes --------
 
 " Makefiles
-autocmd FileType make setlocal noexpandtab
+" autocmd FileType make setlocal noexpandtab
 " -------------------------
 
 " ------ Plugins ---------
 call plug#begin('~/.vim/plugged')
 
 Plug 'scrooloose/nerdtree'
+
+" colorschemes
 Plug 'joshdick/onedark.vim'
+Plug 'morhetz/gruvbox'
+
 Plug 'tpope/vim-commentary'
 Plug 'vim-airline/vim-airline'
 
 call plug#end()
+" -------------------------
 
 nnoremap <leader>n :NERDTreeToggle<CR>
 
@@ -39,3 +47,5 @@ autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_
 
 " Open the existing NERDTree on each new tab.
 autocmd BufWinEnter * silent NERDTreeMirror
+
+colorscheme gruvbox
