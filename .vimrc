@@ -1,51 +1,43 @@
+" VIM Configuration File
+" Description: Optimized for C/C++ development, but useful also for other things.
+" Author: sampath kovvali
+
+" disable vi compability
+set nocompatible
+
+" map jj to ESC
 imap jj <Esc>
 imap JJ <Esc>
 
+" set relative line numbering
 set nu rnu
 
+"tab to 2 spaces
 set tabstop=2
+
+" indent with 2 spaces
 set shiftwidth=2
+
+" expand tab to spaces
 set expandtab
+
+" enable mouse
 set mouse=a
+
+" nice line
 set cursorline
-set cindent
-set bg=dark
-set noshowmode
 
-let mapleader = " "
+" wrap lines at 80 chars.
+set textwidth=120
 
-" ------ FileTypes --------
+" show file in titlebar
+set title
 
-" Makefiles
-" autocmd FileType make setlocal noexpandtab
-" -------------------------
+" list chars
+set listchars=space:_,tab:>~
 
-" ------ Plugins ---------
-call plug#begin('~/.vim/plugged')
-
-Plug 'scrooloose/nerdtree'
-
-" colorschemes
-Plug 'joshdick/onedark.vim'
-Plug 'morhetz/gruvbox'
-
-Plug 'tpope/vim-commentary'
-Plug 'vim-airline/vim-airline'
-
-call plug#end()
-" -------------------------
-
-nnoremap <leader>n :NERDTreeToggle<CR>
-
-" Exit Vim if NERDTree is the only window left.
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
-      \ quit | endif
-
-" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
-autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
-    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
-
-" Open the existing NERDTree on each new tab.
-autocmd BufWinEnter * silent NERDTreeMirror
-
-colorscheme gruvbox
+" Vim jump to the last position when reopening a file
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+    \| exe "normal! g'\"" | endif
+endif
