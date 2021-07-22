@@ -1,14 +1,3 @@
-" VIM Configuration File
-" Description: Optimized for C/C++ development, but useful also for other things.
-" Author: sampath kovvali
-
-" disable vi compability
-set nocompatible
-
-" map jj to ESC
-imap jj <Esc>
-imap JJ <Esc>
-
 " set relative line numbering
 set nu rnu
 
