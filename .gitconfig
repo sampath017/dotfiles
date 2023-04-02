@@ -1,1 +1,11 @@
-
+[user]
+    email = 118274231+sampath017@users.noreply.github.com
+    name = sampath
+[init]
+    defaultBranch = main
+[push]
+    default = simple
+[pull]
+    default = current
+[credential]
+    helper = store
